@@ -1,0 +1,28 @@
+@function double($value) {
+  @return $value * 2px;
+}
+@function half($value) {
+  @return $value / 2 + px;
+}
+.smallBox {
+  // 50px
+  width: half(100);
+  // 50px
+  height: half(100);
+  border: 1px solid #000;
+}
+
+.bigBox {
+  // 200px
+  width: double(100);
+  // 200px
+  height: double(100);
+  border: 1px solid #000;
+}
+
+
+// 相当于
+// .bigBox, .smallBox {
+//   box-shadow: 0 0 5px black;
+//   margin: 10px;
+// }
