@@ -1,13 +1,22 @@
-.smallBox {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #000;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.bigBox {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #000;
+.icons {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+}
+.icons > .icon {
+  border: 1px solid green;
+  height: 18.4vw;
+  width: 18.4vw;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */

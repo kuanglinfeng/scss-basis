@@ -110,6 +110,7 @@ $red: #f00;
   position: fixed;
   top: 197 % 99px + 100px;
   left: 100px / 2 - 0;
+}
 ```
 
 字符串插值`#{}`
@@ -240,3 +241,44 @@ mixin复制css属性，%复制选择器。能使用%请尽量使用，因为实�
 一般用在动画帧里：
 
 https://www.jianshu.com/p/86dc2d8b7870
+
+## 响应式
+
+核心：利用scss函数将设计稿里所有元素宽高相对于设计稿的宽高占比，自动转为vw
+
+例子：设计稿的宽度为375px，页面内容为一个方框包含四个水平均匀分布的圆环(直径为69px)，要响应式适配所有设备
+
+```html
+<div class="icons">
+  <div class="icon">1</div>
+  <div class="icon">2</div>
+  <div class="icon">3</div>
+  <div class="icon">4</div>
+</div>
+```
+
+```scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// 计算适配比
+@function px($npx) {
+  @return $npx / 375 * 100vw;
+}
+.icons {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  > .icon {
+    border: 1px solid green;
+    height: px(69);
+    width: px(69);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+```
