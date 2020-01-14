@@ -7,12 +7,29 @@
   <title>SCSS BASIS</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>  
-  <div class="icons">
-    <div class="icon">1</div>
-    <div class="icon">2</div>
-    <div class="icon">3</div>
-    <div class="icon">4</div>
-  </div>
+<body>
+  <nav class="siteNav " id="nav">
+    <img width="94" height="68" src="../img/bear.png" alt="logo">
+    <ul>
+      <li><a href="#">Vue</a></li>
+      <li><a href="#">React</a></li>
+      <li><a href="#">TypeScript</a></li>
+      <li><a href="#">Webpack</a></li>
+    </ul>
+    <span id="menu" class="menu">三</span>
+    <span id="closeMenu" class="closeMenu">X</span>
+  </nav class="siteNav">
+
+  <script>
+    let menu = document.querySelector('#menu')
+    let nav = document.querySelector('#nav')
+    let closeMenu = document.querySelector('#closeMenu')
+    menu.addEventListener('click', () => {
+      nav.classList.toggle('open')
+    })
+    closeMenu.addEventListener('click', () => {
+      nav.classList.remove('open')
+    })
+  </script>
 </body>
 </html>

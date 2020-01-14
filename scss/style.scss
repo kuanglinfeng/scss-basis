@@ -1,22 +1,87 @@
+// css reset
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-@function px($npx) {
-  @return $npx / 375 * 100vw;
+
+ul,
+ol {
+  list-style: none;
 }
-.icons {
-  border: 1px solid red;
+body{
+  background: linear-gradient(to right, #2b3e76 0%, #1e2d51 100%);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+// 定义
+@mixin phone {
+  @media (max-width: 500px) {
+    @content
+  }
+}
+
+
+
+.siteNav {
+  color: white;
   display: flex;
-  justify-content: space-between;
-  > .icon {
-    border: 1px solid green;
-    height: px(69);
-    width: px(69);
-    border-radius: 50%;
+  align-items: center;
+  >ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
+
+    >li {
+
+      a {
+        display: inline-block;
+        padding: 1em;
+      }
+    }
+  }
+  .menu {
+    display: none;
+  }
+  .closeMenu {
+    display: none;
+    color: black;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+  }
+  @keyframes done {
+    0%{
+      transform: translateY(-100%);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+  // 使用
+  @include phone {
+    > ul {
+      display: none;
+    }
+    &.open > ul {
+      display: block;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      color: black;
+      animation: done 1s;
+    }
+    &.open .closeMenu {
+      display: block;
+    }
+    .menu {
+      display: block;
+      margin-left: auto;
+      margin-right: 20px;
+    }
   }
 }

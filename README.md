@@ -244,7 +244,16 @@ https://www.jianshu.com/p/86dc2d8b7870
 
 ## 响应式
 
-核心：利用scss函数将设计稿里所有元素宽高相对于设计稿的宽高占比，自动转为vw（如果要兼容ie8，可以利用动态REM模拟vw）
+### vw方案
+
+1. 所有宽度用 vw 计算，这样就能动态缩放。
+2. 使用函数将 px -> vw 的计算过程简化：
+```scss
+@function px($npx) {
+  @return $npx/375 * 100vw;
+}
+```
+如果 vw 的兼容性你不能接受，可以使用「动态 REM 方案」来模拟。
 
 例子：设计稿的宽度为375px，页面内容为一个方框包含四个水平均匀分布的圆环(直径为69px)，要响应式适配所有设备
 
@@ -282,3 +291,40 @@ https://www.jianshu.com/p/86dc2d8b7870
   }
 }
 ```
+
+### 媒体查询方案
+
+使用mixin封装媒体查询
+
+```scss
+// 定义
+@mixin phone {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+// 使用
+@include phone {
+  > ul {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+}
+// 得到的代码
+@media (max-width: 500px) {
+    > ul {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+}
+```
+
+一个小demo:
+
+
+
+
