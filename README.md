@@ -323,8 +323,8 @@ https://www.jianshu.com/p/86dc2d8b7870
 }
 ```
 
-一个小demo:
+媒体查询小demo预览:
 
-
+https://kuanglinfeng.github.io/scss-basis/public/index.html
 
 
